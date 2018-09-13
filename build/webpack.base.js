@@ -2,7 +2,6 @@ const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
-const webpack = require('webpack')
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
@@ -35,13 +34,19 @@ module.exports = {
     }
   },
   optimization: {
-    // runtimeChunk: 'single',
+    runtimeChunk: true,
     splitChunks: {
       cacheGroups: {
+        commons: {
+          name: 'commons',
+          filename: 'commons.js',
+          chunks: 'initial',
+          minChunks: 2
+        },
         vendor: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
-          enforce: true,
+          filename: 'node-static.js',
           chunks: 'all'
         }
       }
