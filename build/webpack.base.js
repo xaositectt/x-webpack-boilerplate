@@ -61,6 +61,19 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
       {
+        test: /\.scss$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              indentedSyntax: true
+            }
+          }
+        ]
+      },
+      {
         test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
         use: ['url-loader']
       },
