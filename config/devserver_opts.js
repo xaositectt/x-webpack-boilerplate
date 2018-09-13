@@ -5,8 +5,8 @@ module.exports = {
   port: 3000,
   hot: true,
   compress: true,
-  open: true,
-  openPage: '',
+  // open: true,
+  // openPage: '',
   overlay: {
     warnings: true,
     errors: true

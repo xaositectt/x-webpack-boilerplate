@@ -10,9 +10,9 @@ module.exports = merge(common, {
   devtool: config.dev.devtool,
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static'
-    })
+    // new BundleAnalyzerPlugin({
+    //   analyzerMode: 'static'
+    // })
   ],
   devServer: config.dev.devServerOpts
 })
