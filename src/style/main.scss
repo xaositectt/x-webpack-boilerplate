@@ -1,2 +1,35 @@
 @import './colors';
 @import './color_classes';
+@import './tachyons';
+@import './responsive';
+
+html {
+  height: 100%;
+}
+
+.no-text-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+// Remove tap highlight on iOS
+input,
+textarea,
+button,
+select,
+label,
+a,
+.no-tap-highlight {
+  -webkit-tap-highlight-color: transparent;
+}
+
+// Remove inner shadow from inputs on iOS
+input,
+textarea {
+  -webkit-appearance: none;
+}

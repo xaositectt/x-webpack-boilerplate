@@ -1,0 +1,26 @@
+$breakpoints: (
+  not-small: 'screen and (min-width: 40em)', // > 640px
+  medium: 'screen and (min-width: 52em)', // > 832px
+  large: 'screen and (min-width: 64em)', // > 1024px
+  xl: 'screen and (min-width: 90em)', // > 1440px
+  xxl: 'screen and (min-width: 114em)' // > 1824px
+);
+
+@mixin media($breakpoint) {
+  $raw-query: map-get($breakpoints, $breakpoint);
+
+  @if $raw-query {
+    $query: if(
+      type-of($raw-query) == 'string',
+      unquote($raw-query),
+      inspect($raw-query)
+    );
+
+    @media #{$query} {
+      @content;
+    }
+  } @else {
+    @error 'No value found for `#{$breakpoint}`. '
+         + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
