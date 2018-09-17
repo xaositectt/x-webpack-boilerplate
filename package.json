@@ -10,7 +10,6 @@
     "server": "nodemon server.js",
     "watch": "webpack --watch",
     "build": "webpack --config ./build/webpack.prod.js",
-    "start": "concurrently --kill-others-on-fail \"npm run-script server\" \"npm run-script client\""
   },
   "author": "xaositect",
   "license": "ISC",
@@ -44,7 +43,6 @@
     "@babel/polyfill": "^7.0.0",
     "@babel/runtime": "^7.0.0",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "concurrently": "^4.0.1",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "lodash": "^4.17.10",

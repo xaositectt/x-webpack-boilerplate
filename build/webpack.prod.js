@@ -9,5 +9,10 @@ module.exports = merge(common, {
     path: config.prod.assetsRoot,
     filename: 'js/[name].[chunkhash].js',
     chunkFilename: 'js/[name].[chunkhash].js'
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': config.prod.env
+    })
+  ],
 })

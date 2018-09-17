@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
   res.status(200).json({msg: 'hello there'});
 })
 
-app.use('/article', articleRoute)
+app.use('/api', [articleRoute])
 
 app.use(function(req, res, next) {
   next(createError(404));

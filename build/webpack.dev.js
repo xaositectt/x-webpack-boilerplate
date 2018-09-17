@@ -9,6 +9,9 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: config.dev.devtool,
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': config.dev.env
+    }),
     new webpack.HotModuleReplacementPlugin(),
     // new BundleAnalyzerPlugin({
     //   analyzerMode: 'static'
