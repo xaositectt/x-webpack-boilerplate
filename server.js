@@ -4,8 +4,7 @@ const logger = require('morgan')
 const createError = require('http-errors')
 const cors = require('cors')
 
-const firstRoute = require('./backend/routes/first')
-const secondRoute = require('./backend/routes/second')
+const articleRoute = require('./backend/routes/article')
 
 const app = express()
 
@@ -25,8 +24,7 @@ app.get('/', (req, res) => {
   res.status(200).json({msg: 'hello there'});
 })
 
-app.use('/first', firstRoute)
-app.use('/second', secondRoute)
+app.use('/article', articleRoute)
 
 app.use(function(req, res, next) {
   next(createError(404));
