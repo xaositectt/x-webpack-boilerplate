@@ -25,4 +25,3 @@ export default {
 <style lang="scss">
 @import 'src/style/main.scss';
 </style>
-

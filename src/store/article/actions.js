@@ -9,8 +9,6 @@ import {
 
 export const fetchArticles = ({ commit }) => {
   articles.get().then(res => {
-    console.log(res)
-    console.log(SET_ARTICLES)
     commit(SET_ARTICLES, res.data)
     commit(SET_ARTICLES_LOADED)
   }).catch(err => {
