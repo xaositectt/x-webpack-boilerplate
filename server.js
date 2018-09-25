@@ -21,7 +21,7 @@ app.use(cors({
 }))
 
 app.get('/', (req, res) => {
-  res.status(200).json({msg: 'hello there'});
+  res.status(200).json({msg: 'hello Paige'});
 })
 
 app.use('/api', [articleRoute])
