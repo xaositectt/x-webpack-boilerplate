@@ -1,18 +1,19 @@
 <template>
   <div>
-    <div v-for="article in getArticles">
-      <div>{{ article.name }}</div>
-      <div>{{ article.points }}</div>
-    </div>
+    <nav-bar></nav-bar>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import navBar from 'src/components/base/header'
 
 export default {
   name: 'app',
+  components: {
+    navBar
+  },
   computed: mapGetters([
     'getArticles'
   ]),

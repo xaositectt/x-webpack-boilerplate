@@ -2,5 +2,16 @@ $colors: (
   light-gray: #d7d7d7,
   gold: #d8aa28,
   silver: #b7b7b6,
-  bronze: #c59b70
+  bronze: #c59b70,
+  purpleblue: #8c8bef,
+  darkblue: #0e4a75
 );
+
+:export {
+  light-gray: #d7d7d7;
+  gold: #d8aa28;
+  silver: #b7b7b6;
+  bronze: #c59b70;
+  purpleblue: #8c8bef;
+  darkblue: #0e4a75;
+}
