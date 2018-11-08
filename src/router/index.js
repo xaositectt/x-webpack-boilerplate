@@ -5,6 +5,8 @@ import Home from 'src/views/Home'
 import About from 'src/views/About'
 import Connect from 'src/views/Connect'
 import NotFound from 'src/views/NotFound'
+import Three from '../views/3dtest.vue'
+import Three2 from '../views/3dtest2.vue'
 
 Vue.use(Router)
 
@@ -25,6 +27,16 @@ const router = new Router({
       path: '/connect',
       name: 'connect',
       component: Connect
+    },
+    {
+      path: '/three',
+      name: 'three',
+      component: Three
+    },
+    {
+      path: '/three2',
+      name: 'three2',
+      component: Three2
     },
     {
       path: '*',
