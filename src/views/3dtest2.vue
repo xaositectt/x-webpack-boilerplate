@@ -6,6 +6,10 @@
 
 <script>
 import * as three from 'three'
+import { sphere, cube } from 'src/3d/shapes'
+import { lambertMaterial, phongMaterial } from 'src/3d/materials'
+import * as colors from 'src/3d/colors'
+import { pointLight } from 'src/3d/light'
 
 export default {
   name: 'threeTest',
@@ -21,21 +25,6 @@ export default {
         near: 0.1,
         far: 10000
       },
-      lightOptions: {
-        color: 0xFFFFFF,
-        x: 10,
-        y: 50,
-        z: 130
-      },
-      sphereOptions: {
-        radius: 50,
-        segments: 10,
-        rings: 10,
-        material: this.material('lambert', 0xCC0000),
-        x: 0,
-        y: 0,
-        z: -300
-      }
     }
   },
   computed: {
@@ -52,13 +41,24 @@ export default {
       const scene = new three.Scene();
       const camera = this.camera(this.cameraOptions)
 
-      const sphere = this.sphere(this.sphereOptions)
+      const sphereOne = sphere({ material: lambertMaterial(colors.RED), z: -300 })
+      const sphereTwo = sphere({ material: lambertMaterial(colors.GREEN), x: -100, z: -300 })
+      const sphereThree = sphere({ material: lambertMaterial(colors.BLUE), x: 100, z: -300 })
+      const cubeOne = cube({ size: 20, material: phongMaterial(colors.YELLOW), x: -30, z: -200})
+      const cubeTwo = cube({ size: 20, material: phongMaterial(colors.WHITE), x: 30, z: -200})
 
-      const pointLight = this.light(this.lightOptions)
+      const light = pointLight(colors.WHITE)
 
       scene.add(camera)
-      scene.add(sphere)
-      scene.add(pointLight)
+
+      scene.add(sphereOne)
+      scene.add(sphereTwo)
+      scene.add(sphereThree)
+
+      scene.add(cubeOne)
+      scene.add(cubeTwo)
+
+      scene.add(light)
 
       console.log(sphere)
       function update () {
@@ -79,34 +79,6 @@ export default {
     },
     camera({angle = 45, aspect= 1.3, near = 0.1, far = 10000}) {
       return new three.PerspectiveCamera(angle, aspect, near, far)
-    },
-    light({color, x = 0, y = 0, z = 0}) {
-      const light = new three.PointLight(color)
-      light.position.x = x
-      light.position.y = y
-      light.position.z = z
-      return light
-
-    },
-    material(type, colorCode) {
-      let material
-      if (type === 'basic') {
-        material = new three.MeshBasicMaterial({ color: colorCode })
-      } else if (type === 'lambert') {
-        material = new three.MeshLambertMaterial({ color: colorCode })
-      } else if (type === 'phong') {
-        material = new three.MeshBasicMaterial({ color: colorCode })
-      } else {
-        throw new TypeError('wrong material type');
-      }
-      return material
-    },
-    sphere({radius, segments, rings, material, x = 0, y = 0, z = 0}) {
-      const sphere = new three.Mesh(new three.SphereGeometry(radius, segments, rings), material)
-      sphere.position.x = x
-      sphere.position.y = y
-      sphere.position.z = z
-      return sphere
     },
     animate: function() {
     }
